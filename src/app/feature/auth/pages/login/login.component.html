@@ -1,0 +1,13 @@
+<div [formGroup]="loginForm" class="container">
+    <h1>Clin Med</h1>
+    <form action="" method="post">
+        <input type="text" formControlName="username">
+        <input type="password" formControlName="password">
+        <button [disabled]="!loginForm.valid">Login</button>
+    </form>
+    <div>
+        <a href="">Redefinir senha</a>
+        <a href="">Cadastre-se</a>
+    </div>
+    
+</div>
