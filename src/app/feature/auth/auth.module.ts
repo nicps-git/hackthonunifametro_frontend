@@ -8,17 +8,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import { FrameComponent } from './components/frame/frame.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PasswordRedefineComponent } from './pages/password-redefine/password-redefine.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    FrameComponent,
-    PasswordRecoveryComponent
+    PasswordRecoveryComponent,
+    PasswordRedefineComponent
   ],
   imports: [
     CommonModule,
@@ -28,9 +28,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule, 
     MatIconModule,
     MatButtonModule,
-    MatCardModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SharedModule
   ]
 })
 export class AuthModule { }
