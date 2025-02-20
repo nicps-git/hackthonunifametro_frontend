@@ -10,12 +10,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { FrameComponent } from './components/frame/frame.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    FrameComponent
+    FrameComponent,
+    PasswordRecoveryComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ]
 })
 export class AuthModule { }
