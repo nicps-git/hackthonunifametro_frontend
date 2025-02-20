@@ -2,12 +2,15 @@
     <mat-card>
         <mat-card-header>
             <div id="frame-header">
-                <h1>CLIN MED</h1>
-                <h2>{{subtitle}}</h2>
+                <h1 class="centered-text">CLIN MED</h1>
+                <h2 class="centered-text">{{subtitle}}</h2>
             </div>
         </mat-card-header>
         <mat-card-content>
-            <ng-content></ng-content>
+            <div class="frame-content">
+                <ng-content ></ng-content>
+            </div>
+            
         </mat-card-content>
     </mat-card>
 </div>

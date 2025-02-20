@@ -10,6 +10,9 @@ form {
    margin-bottom: 1.4rem;
 }
 
+#button-text {
+   margin: 0;
+}
 
 @media(min-width: 400px) {
    mat-card {

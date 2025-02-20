@@ -8,11 +8,21 @@
 
 #frame-header {
     width: 100%;
+    margin: 1rem 0;
 }
 
-h1, h2 {
+.centered-text {
     width: 100%;
     text-align: center;
+}
+
+h1 {
+    font-weight: bold;
+    color: #1565C0;
+}
+
+.frame-content {
+    margin: 0 1rem 1rem 1rem
 }
 
 @media(min-width: 400px) {

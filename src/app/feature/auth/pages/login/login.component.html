@@ -2,14 +2,17 @@
     <form action="" method="post" [formGroup]="loginForm">
         <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput type="text" formControlName="username" [class.invalid]="false">
+            <input matInput type="text" formControlName="username" required="false">
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" required="false">
             <mat-label>Senha</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <input matInput required="false"
+                [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix 
+                (click)="hidePassword = !hidePassword" 
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
     </form>
@@ -17,5 +20,9 @@
         <a href="">Redefinir senha</a>
         <a href="">Cadastre-se</a>
     </div>
-    <button id="login-button" mat-flat-button color="primary" [disabled]="!loginForm.valid">Login</button>
+    <button id="login-button" mat-flat-button color="primary" [disabled]="!loginForm.valid || isLoading"
+        (click)="loginRequest()">
+        <p *ngIf="!isLoading" id="button-text">Entrar</p>
+        <mat-spinner *ngIf="isLoading" [diameter]="20"></mat-spinner>
+    </button>
 </app-frame>
