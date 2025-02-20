@@ -1,13 +1,21 @@
-<div [formGroup]="loginForm" class="container">
-    <h1>Clin Med</h1>
-    <form action="" method="post">
-        <input type="text" formControlName="username">
-        <input type="password" formControlName="password">
-        <button [disabled]="!loginForm.valid">Login</button>
+<app-frame>
+    <form action="" method="post" [formGroup]="loginForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Login</mat-label>
+            <input matInput type="text" formControlName="username" [class.invalid]="false">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
     </form>
-    <div>
+    <div id="links">
         <a href="">Redefinir senha</a>
         <a href="">Cadastre-se</a>
     </div>
-    
-</div>
+    <button id="login-button" mat-flat-button color="primary" [disabled]="!loginForm.valid">Login</button>
+</app-frame>
