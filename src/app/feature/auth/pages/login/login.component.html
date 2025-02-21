@@ -20,9 +20,13 @@
         <a href="">Redefinir senha</a>
         <a href="">Cadastre-se</a>
     </div>
-    <button id="login-button" mat-flat-button color="primary" [disabled]="!loginForm.valid || isLoading"
-        (click)="loginRequest()">
-        <p *ngIf="!isLoading" id="button-text">Entrar</p>
-        <mat-spinner *ngIf="isLoading" [diameter]="20"></mat-spinner>
-    </button>
+    <div id="button-container">
+        <app-button-with-loading 
+        [text]="'Entrar'" 
+        [isDisabled]="!loginForm.valid || isLoading"
+        [isLoading]="isLoading"
+        (clicked)="loginRequest()"
+        />
+    </div>
+    
 </app-frame>

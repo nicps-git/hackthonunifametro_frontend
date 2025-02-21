@@ -10,8 +10,8 @@ form {
    margin-bottom: 1.4rem;
 }
 
-#button-text {
-   margin: 0;
+#button-container {
+   max-width: 5rem;
 }
 
 @media(min-width: 400px) {
