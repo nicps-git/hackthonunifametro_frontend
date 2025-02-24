@@ -1,0 +1,37 @@
+# =========================
+# Etapa 1: Build
+# =========================
+FROM node:16 AS build
+WORKDIR /opt
+
+# Copia arquivos de dependência e instala
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Copia o restante do código e gera o build de produção
+COPY . .
+RUN npm run build
+
+# =========================
+# Etapa 2: Produção (Ubuntu)
+# =========================
+FROM ubuntu:latest
+
+# Instala o nginx no Ubuntu
+RUN apt-get update && \
+    apt-get install -y nginx && \
+    rm -rf /var/lib/apt/lists/*
+
+#RUN rm /etc/nginx/conf.d/default.conf
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copia os arquivos compilados para a pasta padrão do Nginx
+#COPY --from=build /opt/dist/hackthonunifametro_frontend /var/www/html
+COPY --from=build /opt/dist/hackthonunifametro_frontend /usr/share/nginx/html
+
+# Expõe a porta 80
+EXPOSE 80
+
+# Comando de inicialização do Nginx
+CMD ["nginx", "-g", "daemon off;"]
