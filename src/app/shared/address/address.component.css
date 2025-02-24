@@ -1,0 +1,6 @@
+mat-form-field + mat-form-field {
+    margin-left: 15px;
+  }
+  mat-form-field {
+    width: 100%; /* Garante que cada campo ocupe todo o espaço disponível */
+  }

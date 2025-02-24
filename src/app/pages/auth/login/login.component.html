@@ -1,0 +1,32 @@
+<app-frame>
+    <form action="" method="post" [formGroup]="loginForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Login</mat-label>
+            <input matInput type="text" formControlName="username" required="false">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" required="false">
+            <mat-label>Senha</mat-label>
+            <input matInput required="false"
+                [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix 
+                (click)="hidePassword = !hidePassword" 
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+    <div id="links">
+        <a routerLink="/auth/recovery-password">Redefinir senha</a>
+        <a routerLink="/auth/register">Cadastre-se</a>
+    </div>
+    <div id="button-container">
+        <app-button-with-loading 
+        [text]="'Entrar'" 
+        [isDisabled]="!loginForm.valid || isLoading"
+        [isLoading]="isLoading"
+        (clicked)="loginRequest()"
+        />
+    </div>
+    
+</app-frame>
