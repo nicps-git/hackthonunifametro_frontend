@@ -1,0 +1,5 @@
+<button id="login-button" mat-flat-button color="primary" [disabled]="isDisabled"
+    (click)="clicked.emit()">
+    <p *ngIf="!isLoading" id="button-text">{{text}}</p>
+    <mat-spinner *ngIf="isLoading" [diameter]="20"></mat-spinner>
+</button>

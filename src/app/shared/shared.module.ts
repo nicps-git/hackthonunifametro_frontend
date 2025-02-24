@@ -9,10 +9,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { AddressService } from './service/address-service/address.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 
+import { FrameComponent } from './components/frame/frame.component';
+import { ButtonWithLoadingComponent } from './components/button-with-loading/button-with-loading.component';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
-    AddressComponent
+    AddressComponent,
+    FrameComponent,
+    ButtonWithLoadingComponent,
   ],
   imports: [
     CommonModule,
@@ -22,9 +29,16 @@ import { AddressService } from './service/address-service/address.service';
        MatSelectModule,
        MatNativeDateModule,
        MatIconModule,
-       HttpClientModule
+       HttpClientModule,
+       MatCardModule,
+       MatProgressSpinnerModule,
+       MatButtonModule,
   ],
-  exports:[AddressComponent],
+  exports:[
+    AddressComponent,
+    FrameComponent,
+    ButtonWithLoadingComponent
+  ],
   providers: [AddressService]
   
 })

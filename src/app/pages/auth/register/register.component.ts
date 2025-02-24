@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-patient-create',
-  templateUrl: './patient-create.component.html',
-  styleUrls: ['./patient-create.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class PatientCreateComponent implements OnInit {
-
-  public form : FormGroup;
+export class RegisterComponent {
+public form : FormGroup;
 
   constructor(private fb: FormBuilder){
     this.form = this.fb.group(
@@ -34,10 +33,6 @@ export class PatientCreateComponent implements OnInit {
         confirmarSenha: ['', [Validators.required]]
       }
     )
-  }
-
-  ngOnInit(): void {
-      
   }
 
   onSubmit(){}
