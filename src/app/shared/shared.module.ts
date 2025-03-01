@@ -15,11 +15,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { FrameComponent } from './components/frame/frame.component';
 import { ButtonWithLoadingComponent } from './components/button-with-loading/button-with-loading.component';
 import { MatCardModule } from '@angular/material/card';
+import { AuthService } from './service/auth-service/auth.service';
+import { MinutesFormatPipe } from './pipe/minutes-format.pipe';
+import { CpfFormatDirective } from './diretive/cpf-format.directive';
 @NgModule({
   declarations: [
     AddressComponent,
     FrameComponent,
     ButtonWithLoadingComponent,
+    MinutesFormatPipe,
+    CpfFormatDirective,
   ],
   imports: [
     CommonModule,
@@ -37,9 +42,11 @@ import { MatCardModule } from '@angular/material/card';
   exports:[
     AddressComponent,
     FrameComponent,
-    ButtonWithLoadingComponent
+    ButtonWithLoadingComponent,
+    MinutesFormatPipe,
+    CpfFormatDirective
   ],
-  providers: [AddressService]
+  providers: [AddressService, AuthService]
   
 })
 export class SharedModule {}
