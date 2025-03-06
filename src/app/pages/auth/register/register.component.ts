@@ -78,6 +78,7 @@ export class RegisterComponent implements OnInit {
       paciente.dataNascimento
     );
 
+
     this.usuarioService.createUsuarioPaciente(paciente).subscribe({
       next: (resp: any) => {
         if (resp?.data) {
@@ -99,10 +100,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  formatarDataNascimento(dataISO: string): string {
-    const data = new Date(dataISO);
-    const dia = data.getDate().toString().padStart(2, '0'); // Pega o dia e adiciona zero à esquerda se necessário
-    const mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Meses começam em 0, então adicionamos +1
+  formatarDataNascimento(data: string): string {
+    const [day, month, year] = data.split("/");
+    const nascimento = new Date(`${year}-${month}-${day}T00:00:00`);
+    const dia = nascimento.getDate().toString().padStart(2, '0'); // Pega o dia e adiciona zero à esquerda se necessário
+    const mes = (nascimento.getMonth() + 1).toString().padStart(2, '0'); // Meses começam em 0, então adicionamos +1
     return `${dia}-${mes}`;
   }
 
