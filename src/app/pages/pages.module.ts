@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PatientModule } from './patient/patient.module';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -8,7 +7,7 @@ import { AuthModule } from './auth/auth.module';
   ],
   imports: [
     CommonModule,
-    AuthModule
+    AuthModule,
     ],
   exports: [ ]
 })

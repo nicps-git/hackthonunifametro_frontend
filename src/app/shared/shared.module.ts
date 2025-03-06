@@ -15,6 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { FrameComponent } from './components/frame/frame.component';
 import { ButtonWithLoadingComponent } from './components/button-with-loading/button-with-loading.component';
 import { MatCardModule } from '@angular/material/card';
+import { UsuarioService } from './service/usuario-service/usuario.service';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 @NgModule({
   declarations: [
     AddressComponent,
@@ -33,13 +35,14 @@ import { MatCardModule } from '@angular/material/card';
        MatCardModule,
        MatProgressSpinnerModule,
        MatButtonModule,
+           NgxMaskDirective
   ],
   exports:[
     AddressComponent,
     FrameComponent,
     ButtonWithLoadingComponent
   ],
-  providers: [AddressService]
+  providers: [AddressService, UsuarioService, provideNgxMask()]
   
 })
 export class SharedModule {}

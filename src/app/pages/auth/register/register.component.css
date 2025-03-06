@@ -73,3 +73,11 @@ h1 {
     color: #1565C0;
     margin-bottom: 0;
 }
+
+.field-invalid {
+   color: red;
+}
+
+p {
+   font-family: Lato;
+ }
