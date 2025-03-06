@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/service/auth-service/auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit{
   constructor(
     private formBuilder:FormBuilder,
     private authService:AuthService, 
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -38,7 +40,8 @@ export class LoginComponent implements OnInit{
       next: (res) => {
         this.isLoading = false;
         const token = res.data.token;
-        sessionStorage.setItem(environment.accessTokenKey, token);
+        localStorage.setItem(environment.accessTokenKey, token);
+        this.router.navigate(['/agendamento/home'])
       },
       error: (err) => {
         let errorMessage = "";

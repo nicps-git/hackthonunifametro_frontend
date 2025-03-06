@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { PagesModule } from './pages/pages.module';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 export const BR_DATE_FORMATS = {
   parse: {
@@ -30,7 +31,8 @@ export const BR_DATE_FORMATS = {
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    PagesModule
+    PagesModule,
+    SharedModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }, // Define o idioma para português

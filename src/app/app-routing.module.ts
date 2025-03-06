@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { 
@@ -11,6 +12,11 @@ const routes: Routes = [
     redirectTo: '/auth/login',
     pathMatch: 'full'
   },
+  {
+    path: 'agendamento',
+    loadChildren: () => import('./pages/agendamento/agendamento.module').then(m => m.AgendamentoModule),
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

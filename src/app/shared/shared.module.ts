@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddressComponent } from './address/address.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -20,13 +19,17 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { AuthService } from './service/auth-service/auth.service';
 import { MinutesFormatPipe } from './pipe/minutes-format.pipe';
 import { CpfFormatDirective } from './diretive/cpf-format.directive';
+import { AddressComponent } from './components/address/address.component';
+import { HeaderComponent } from './components/header/header.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
-    AddressComponent,
     FrameComponent,
     ButtonWithLoadingComponent,
     MinutesFormatPipe,
     CpfFormatDirective,
+    AddressComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -40,14 +43,16 @@ import { CpfFormatDirective } from './diretive/cpf-format.directive';
        MatCardModule,
        MatProgressSpinnerModule,
        MatButtonModule,
-           NgxMaskDirective
+      NgxMaskDirective,
+      MatToolbarModule
   ],
   exports:[
     AddressComponent,
     FrameComponent,
     ButtonWithLoadingComponent,
     MinutesFormatPipe,
-    CpfFormatDirective
+    CpfFormatDirective,
+    HeaderComponent
   ],
   providers: [AddressService, UsuarioService, provideNgxMask(), AuthService]
   
