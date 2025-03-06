@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment'
   providedIn: 'root'
 })
 export class AuthService {
+  private tokenKey = 'accessToken';
 
   API_URL = environment.apiUrl;
 
@@ -21,5 +22,10 @@ export class AuthService {
 
   resetPassword(request:{code:string, password:string}){
     return this.http.post(`${this.API_URL}/v1/login/resetPassword`, request);
+  }
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem(this.tokenKey);
+    return token !== null; // Aqui você pode implementar lógica para verificar a validade do token
   }
 }

@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AddressService } from '../service/address-service/address.service';
-import { estados } from '../util/mock-address';
+import { AddressService } from '../../service/address-service/address.service';
+import { estados } from '../../util/mock-address';
+
 
 @Component({
   selector: 'app-address',

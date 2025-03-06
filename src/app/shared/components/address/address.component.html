@@ -4,7 +4,7 @@
       <div class="col-2">
         <mat-form-field appearance="outline">
           <mat-label>CEP</mat-label>
-          <input mask="00000-000" (blur)="searchByCep(form.get('endereco')?.get('cep')?.value)" (keydown.enter)="searchByCep(form.get('endereco')?.get('cep')?.value)" matInput formControlName="cep" required />
+          <input mask="00000-000" (keydown.enter)="searchByCep(form.get('endereco')?.get('cep')?.value)" matInput formControlName="cep" required />
           <button type="button" (click)="searchByCep(form.get('endereco')?.get('cep')?.value)" mat-button matSuffix>
             <mat-icon>search</mat-icon>
           </button>        </mat-form-field>
@@ -44,7 +44,7 @@
           <mat-label>Cidade</mat-label>
           <mat-select formControlName="cidade" [disabled]="cidades.length == 0">
             <div *ngFor="let cidade of cidades">
-                <mat-option [value]="cidade" (click)="cidadePorEstado(form.get('endereco')?.get('estado')?.value)">{{cidade}}</mat-option>
+                <mat-option [value]="cidade" >{{cidade}}</mat-option>
             </div>
         </mat-select>
         </mat-form-field>
