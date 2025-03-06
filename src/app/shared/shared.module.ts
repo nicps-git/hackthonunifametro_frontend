@@ -17,11 +17,16 @@ import { ButtonWithLoadingComponent } from './components/button-with-loading/but
 import { MatCardModule } from '@angular/material/card';
 import { UsuarioService } from './service/usuario-service/usuario.service';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { AuthService } from './service/auth-service/auth.service';
+import { MinutesFormatPipe } from './pipe/minutes-format.pipe';
+import { CpfFormatDirective } from './diretive/cpf-format.directive';
 @NgModule({
   declarations: [
     AddressComponent,
     FrameComponent,
     ButtonWithLoadingComponent,
+    MinutesFormatPipe,
+    CpfFormatDirective,
   ],
   imports: [
     CommonModule,
@@ -40,9 +45,11 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
   exports:[
     AddressComponent,
     FrameComponent,
-    ButtonWithLoadingComponent
+    ButtonWithLoadingComponent,
+    MinutesFormatPipe,
+    CpfFormatDirective
   ],
-  providers: [AddressService, UsuarioService, provideNgxMask()]
+  providers: [AddressService, UsuarioService, provideNgxMask(), AuthService]
   
 })
 export class SharedModule {}

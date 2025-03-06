@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/shared/service/auth-service/auth.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -15,7 +16,11 @@ export class PasswordRecoveryComponent {
   timer: any;
   isEmailSent:boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private snackBar: MatSnackBar, 
+    private authService:AuthService
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -23,18 +28,35 @@ export class PasswordRecoveryComponent {
     })
   }
 
-  async sendRecoveryEmail(){
+  sendRecoveryEmail(){
     this.isLoading = true;
 
-    await new Promise(resolve => setTimeout(resolve, 3000));
-
-    this.snackBar.open("Email enviado com sucesso!", undefined, 
-    {
-      duration: 3000
+    this.authService.requestResetPassword({email: this.form.get('email')?.value}).subscribe({
+      next: (res) => {
+        this.snackBar.open(
+          "Caso o email informado esteja cadastrado, você receberá um email com as instruções para redefinir sua senha.",
+          undefined, {duration: 3000});
+          this.isLoading = false;
+          this.isEmailSent = true;
+          this.startCountdown();
+      },
+      error: (err) => {
+        let errorMessage:string = ""
+        if(err.status === 0){
+          errorMessage = "Serviço temporariamente indisponível";
+        }
+        else if(err.status === 422){
+          err.error.error.validation.forEach((element:any) => {
+            errorMessage += (element.message + " ");
+          });
+        }
+        else {
+          errorMessage = err.error.error.message;
+        }
+        this.snackBar.open(errorMessage, undefined, {duration: 10000});
+        this.isLoading = false;
+      }
     })
-    this.isLoading = false;
-    this.isEmailSent = true;
-    this.startCountdown();
   }
 
   startCountdown() {
@@ -42,7 +64,7 @@ export class PasswordRecoveryComponent {
       clearInterval(this.timer);
     }
 
-    this.countdown = 10;
+    this.countdown = 90;
 
     this.timer = setInterval(() => {
       if (this.countdown > 0) {
