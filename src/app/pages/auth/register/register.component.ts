@@ -11,7 +11,6 @@ import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/shared/service/usuario-service/usuario.service';
-import { onDateInput } from 'src/app/shared/util/onDateInput';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +23,6 @@ export class RegisterComponent implements OnInit {
   public loading: boolean = false;
   public hidePassword = true;
   public hideConfirm = true;
-  public onDateInput = onDateInput;
 
   constructor(
     private fb: FormBuilder,
