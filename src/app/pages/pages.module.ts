@@ -7,7 +7,7 @@ import { AuthModule } from './auth/auth.module';
   ],
   imports: [
     CommonModule,
-    AuthModule
+    AuthModule,
     ],
   exports: [ ]
 })

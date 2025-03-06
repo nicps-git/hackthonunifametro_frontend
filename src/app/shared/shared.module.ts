@@ -15,6 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { FrameComponent } from './components/frame/frame.component';
 import { ButtonWithLoadingComponent } from './components/button-with-loading/button-with-loading.component';
 import { MatCardModule } from '@angular/material/card';
+import { UsuarioService } from './service/usuario-service/usuario.service';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { AuthService } from './service/auth-service/auth.service';
 import { MinutesFormatPipe } from './pipe/minutes-format.pipe';
 import { CpfFormatDirective } from './diretive/cpf-format.directive';
@@ -38,6 +40,7 @@ import { CpfFormatDirective } from './diretive/cpf-format.directive';
        MatCardModule,
        MatProgressSpinnerModule,
        MatButtonModule,
+           NgxMaskDirective
   ],
   exports:[
     AddressComponent,
@@ -46,7 +49,7 @@ import { CpfFormatDirective } from './diretive/cpf-format.directive';
     MinutesFormatPipe,
     CpfFormatDirective
   ],
-  providers: [AddressService, AuthService]
+  providers: [AddressService, UsuarioService, provideNgxMask(), AuthService]
   
 })
 export class SharedModule {}

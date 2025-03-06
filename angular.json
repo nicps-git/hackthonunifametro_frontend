@@ -29,7 +29,7 @@
               "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
 
             ],
-            "scripts": []
+            "scripts": []          
           },
           "configurations": {
             "production": {
@@ -68,10 +68,10 @@
               "browserTarget": "hackthonunifametro_frontend:build:development"
             }
           },
+          "defaultConfiguration": "development",
           "options": {
             "port": 3000
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

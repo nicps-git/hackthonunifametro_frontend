@@ -1,126 +1,199 @@
 <div class="container">
-    <mat-card class="p-20">
-      <div id="frame-header">
-        <h1 class="centered-text">UNI CLIN</h1>
-        <h2 class="centered-text">cadastre-se</h2>
+  <mat-card class="p-20">
+    <div id="frame-header">
+      <h1 class="centered-text">UNI CLIN</h1>
+      <h2 class="centered-text">cadastre-se</h2>
     </div>
-  
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <h4 class="title">Dados pessoais</h4>
-        <hr />
-        <div class="row">
-          <div class="col-12">
-            <mat-form-field appearance="outline">
-              <mat-label>Nome Completo</mat-label>
-              <input matInput formControlName="nomeCompleto" required />
-              <mat-error *ngIf="form.get('nomeCompleto')?.invalid"
-                >Campo obrigatório</mat-error
-              >
-            </mat-form-field>
-          </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h4 class="title">Dados pessoais</h4>
+      <hr />
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Nome </mat-label>
+            <input matInput formControlName="nome" required />
+            <mat-error *ngIf="form.get('nome')?.invalid"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col-4">
-            <mat-form-field appearance="outline">
-              <mat-label>Data de Nascimento</mat-label>
-              <input
-                matInput
-                [matDatepicker]="picker"
-                formControlName="dataNascimento"
-              />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div class="col-4">
-            <mat-form-field appearance="outline">
-              <mat-label>Sexo</mat-label>
-              <mat-select formControlName="sexo">
-                <mat-option value="masculino">Masculino</mat-option>
-                <mat-option value="feminino">Feminino</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-4">
-            <mat-form-field appearance="outline">
-              <mat-label>CPF</mat-label>
-              <input matInput formControlName="cpf" required />
-              <mat-error *ngIf="form.get('cpf')?.invalid">CPF inválido</mat-error>
-            </mat-form-field>
-          </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Sobrenome </mat-label>
+            <input matInput formControlName="sobrenome" required />
+            <mat-error *ngIf="form.get('sobrenome')?.invalid"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
         </div>
-        <div class="row" *ngIf="form.get('dataNascimento')?.value && menorDeIdade(form.get('dataNascimento')?.value)">
-          <div class="col-8">
-            <mat-form-field appearance="outline">
-              <mat-label>Responsável</mat-label>
-              <input matInput formControlName="responsavel" />
-            </mat-form-field>
-          </div>
-          <div class="col-4">
-            <mat-form-field appearance="outline">
-              <mat-label>Parentesco</mat-label>
-              <mat-select formControlName="parentesco">
-                <mat-option value="pai">Pai</mat-option>
-                <mat-option value="mãe">Mãe</mat-option>
-                <mat-option value="outro">Outro</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput formControlName="email" required />
-              <mat-error *ngIf="form.get('email')?.invalid"
-                >Email inválido</mat-error
-              >
-            </mat-form-field>
-          </div>
-          <div class="col-4">
-            <mat-form-field appearance="outline">
-              <mat-label>Telefone</mat-label>
-              <input matInput formControlName="telefone" required />
-              <mat-error *ngIf="form.get('telefone')?.invalid"
-                >Telefone inválido</mat-error
-              >
-            </mat-form-field>
-          </div>
-        </div>
-  
-        <h4 class="title">Endereço</h4>
-        <hr />
-        <!-- FORMULÁRIO DE ENDEREÇO -->
-        <app-address [form]="form"></app-address>
-        <!-- FIM DO FORMULÁRIO DE ENDEREÇO / -->
-  
-        <h4 class="title">Autenticação</h4>
-        <hr />
-  
-        <div class="row">
-          <div class="col-6">
-            <mat-form-field appearance="outline">
-              <mat-label>Senha</mat-label>
-              <input matInput formControlName="senha" required />
-            </mat-form-field>
-          </div>
-          <div class="col-6">
-            <mat-form-field appearance="outline">
-              <mat-label>Confirmar senha</mat-label>
-              <input matInput formControlName="senha" required />
-            </mat-form-field>
-          </div>
-        </div>
-        <div id="links">
-          <a routerLink="/auth/login">Já possui cadastro?</a>
       </div>
-        <button class="f-right" type="submit" mat-raised-button color="primary">
-          Cadastrar
-        </button>
-      </form>
-    </mat-card>
-  </div>
-  
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [dropSpecialCharacters]="false" formControlName="dataNascimento" required mask="00/00/0000" />
+            <mat-error *ngIf="form.get('dataNascimento')?.invalid"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Sexo</mat-label>
+            <mat-select formControlName="sexo">
+              <mat-option value="M">Masculino</mat-option>
+              <mat-option value="F">Feminino</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('sexo')?.invalid"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="cpf"
+              mask="000.000.000-00"
+              required
+            />
+            <mat-error *ngIf="form.get('cpf')?.invalid">CPF inválido</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div
+        class="row"
+        *ngIf="
+          form.get('dataNascimento')?.value &&
+          menorDeIdade(form.get('dataNascimento')?.value)
+        "
+      >
+        <div class="col-8">
+          <mat-form-field appearance="outline">
+            <mat-label>Responsável</mat-label>
+            <input matInput formControlName="responsavel" />
+            <mat-error *ngIf="form.get('responsavel')?.invalid"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Parentesco</mat-label>
+            <mat-select formControlName="parentesco">
+              <mat-option value="pai">Pai</mat-option>
+              <mat-option value="mãe">Mãe</mat-option>
+              <mat-option value="outro">Outro</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('parentesco')?.invalid"
+            >Campo obrigatório</mat-error
+          >
+          </mat-form-field>
+        
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required />
+            <mat-error *ngIf="form.get('email')?.invalid"
+              >Email inválido</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input
+              matInput
+              formControlName="telefone"
+              mask="(00) 0 0000-0000"
+              required
+            />
+            <mat-error *ngIf="form.get('telefone')?.invalid"
+              >Telefone inválido</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+
+      <h4 class="title">Endereço</h4>
+      <hr />
+      <!-- FORMULÁRIO DE ENDEREÇO -->
+      <app-address [form]="form"></app-address>
+      <!-- FIM DO FORMULÁRIO DE ENDEREÇO / -->
+
+      <h4 class="title">Autenticação</h4>
+      <hr />
+
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              required
+              [type]="hidePassword ? 'password' : 'text'"
+
+            />
+            <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+            <mat-error *ngIf="form.get('password')?.invalid"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Confirmar senha</mat-label>
+            <input
+              matInput
+              formControlName="confirmarSenha"
+              type="password"
+              required
+              [type]="hideConfirm ? 'password' : 'text'"
+
+            />
+            <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+            <mat-error
+              *ngIf="
+                form.get('confirmarSenha')?.invalid &&
+                !form.hasError('passwordMismatch')
+              "
+              >Campo obrigatório</mat-error
+            >
+            <mat-error
+              *ngIf="
+                form.get('confirmarSenha')?.invalid &&
+                form.hasError('passwordMismatch')
+              "
+              >Senhas não conferem</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div id="links">
+        <a routerLink="/auth/login">Já possui cadastro?</a>
+      </div>
+      <button
+        [disabled]="loading || form.invalid"
+        class="f-right"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        Cadastrar
+        <mat-icon *ngIf="loading"
+          ><mat-spinner diameter="20"> </mat-spinner
+        ></mat-icon>
+      </button>
+    </form>
+  </mat-card>
+</div>

@@ -15,7 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatNativeDateModule,
+    MatProgressSpinnerModule,
+    NgxMaskDirective,
+  ],
+  providers: [
+    provideNgxMask(),
   ],
 })
 export class AuthModule {}
