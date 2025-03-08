@@ -17,8 +17,8 @@
         </mat-form-field>
     </form>
     <div id="links">
-        <a routerLink="/auth/recovery-password">Redefinir senha</a>
-        <a routerLink="/auth/register">Cadastre-se</a>
+        <a (click)="navigateToRecoveryPassword()">Redefinir senha</a>
+        <a (click)="navigateToRegister()">Cadastre-se</a>
     </div>
     <div id="button-container">
         <app-button-with-loading 

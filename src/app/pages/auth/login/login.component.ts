@@ -69,4 +69,12 @@ export class LoginComponent implements OnInit{
       },
     })
   }
+
+  navigateToRecoveryPassword(){
+    this.router.navigate(['/auth/recovery-password']);
+  }
+
+  navigateToRegister(){
+    this.router.navigate(['/auth/register']);
+  }
 }
