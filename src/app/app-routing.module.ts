@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { RoleGuard } from './shared/guards/role.guard';
 
 const routes: Routes = [
   { 
@@ -19,7 +20,9 @@ const routes: Routes = [
   },
   {
     path:'medico',
-    loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule)
+    loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule),
+    canActivateChild: [RoleGuard],
+    data: {roles: ["Médico"]},
   }
 ];
 
