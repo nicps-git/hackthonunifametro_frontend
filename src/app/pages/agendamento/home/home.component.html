@@ -61,9 +61,10 @@
       ></app-card-medicos>
     </div>
     <button
+      
       class="f-right mt-10"
       (click)="agendarConsulta()"
-      *ngIf="selectedDate"
+      *ngIf="selectedDate.idMedico"
       mat-raised-button
       [disabled]="loading"
       color="primary"
