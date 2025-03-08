@@ -22,6 +22,8 @@ import { CpfFormatDirective } from './diretive/cpf-format.directive';
 import { AddressComponent } from './components/address/address.component';
 import { HeaderComponent } from './components/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { CustomDialogComponent } from './components/custom-dialog/custom-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     FrameComponent,
@@ -29,7 +31,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MinutesFormatPipe,
     CpfFormatDirective,
     AddressComponent,
-    HeaderComponent
+    HeaderComponent,
+    CustomDialogComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
        MatProgressSpinnerModule,
        MatButtonModule,
       NgxMaskDirective,
-      MatToolbarModule
+      MatToolbarModule,
+      MatDialogModule
   ],
   exports:[
     AddressComponent,

@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'agendamento',
     loadChildren: () => import('./pages/agendamento/agendamento.module').then(m => m.AgendamentoModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path:'medico',
+    loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule)
   }
 ];
 
