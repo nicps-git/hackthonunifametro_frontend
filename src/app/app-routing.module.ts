@@ -18,12 +18,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/agendamento/agendamento.module').then(m => m.AgendamentoModule),
     canActivate: [AuthGuard],
     data: {roles: ["Paciente"]},
+    
   },
   {
     path:'medico',
     loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule),
     canActivateChild: [RoleGuard],
-    data: {roles: ["Médico"]},
+    data: {roles: ["Médico", "Admin", 'Gerente']},
   }
 ];
 

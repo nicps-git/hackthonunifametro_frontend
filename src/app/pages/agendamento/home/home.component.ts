@@ -14,6 +14,7 @@ import { BodyAgendamento } from 'src/app/shared/model/agendamento.model';
 import { Especialidade } from 'src/app/shared/model/especialidade.model';
 import { Medico } from 'src/app/shared/model/medico.model';
 import { AgendamentoService } from 'src/app/shared/service/agendamento/agendamento.service';
+import { AuthService } from 'src/app/shared/service/auth-service/auth.service';
 import { EspecialidadeService } from 'src/app/shared/service/especialidade/especialidade.service';
 import { MedicoService } from 'src/app/shared/service/medico/medico.service';
 
@@ -51,7 +52,8 @@ export class HomeComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private medicoService: MedicoService,
     private agendamentoService: AgendamentoService,
-    private router: Router
+    private router: Router,
+    private authService : AuthService
   ) {
     this.form = this.fb.group({
       especialidade: [null, Validators.required],
@@ -105,7 +107,7 @@ export class HomeComponent implements OnInit {
 
   agendarConsulta() {
     let agendamento = new BodyAgendamento(
-      '71e22f2e-ad39-4da9-aac5-4bf30c77785b',
+      this.authService.idUser(),
       this.selectedDate.idMedico,
       this.selectedDate.data,
       this.selectedDate.horario

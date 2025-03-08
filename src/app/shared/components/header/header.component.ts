@@ -21,4 +21,11 @@ export class HeaderComponent {
     return !! this.authService.isAuthenticated(); // Retorna true se o token existir
   }
 
+  get perfilUser(): string {
+    return this.authService.perfilUser(); // Retorna true se o token existir
+  }
+
+  navigate(url:string){
+    this.router.navigate([url]);
+  }
 }

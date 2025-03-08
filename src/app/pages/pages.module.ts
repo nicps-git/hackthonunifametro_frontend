@@ -22,7 +22,8 @@ import { PasswordRecoveryComponent } from './auth/password-recovery/password-rec
 import { PasswordRedefineComponent } from './auth/password-redefine/password-redefine.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AgendamentosPacienteComponent } from './agendamento/agendamentos-paciente/agendamentos-paciente.component';
-
+import { CreateDoctorComponent } from './doctor/create-doctor/create-doctor.component';
+import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -30,7 +31,8 @@ import { AgendamentosPacienteComponent } from './agendamento/agendamentos-pacien
     PasswordRecoveryComponent,
     PasswordRedefineComponent,
     RegisterComponent,
-    AgendamentosPacienteComponent
+    AgendamentosPacienteComponent,
+    CreateDoctorComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { AgendamentosPacienteComponent } from './agendamento/agendamentos-pacien
     MatSelectModule,
     MatProgressSpinnerModule,
     NgxMaskDirective,
+    MatChipsModule
   ],
   exports: [],
   providers: [provideNgxMask()],

@@ -1,69 +1,136 @@
 <mat-card>
-    <mat-card-header>
-      <mat-card-title>Configurar disponibilidade de horários</mat-card-title>
-    </mat-card-header>
-  
-    <mat-card-content>
-      <form [formGroup]="scheduleForm">
-  
-        <div>
-          <label>Dias da semana: </label>
-          <mat-checkbox formControlName="Segunda">Segunda</mat-checkbox>
-          <mat-checkbox formControlName="Terca">Terça</mat-checkbox>
-          <mat-checkbox formControlName="Quarta">Quarta</mat-checkbox>
-          <mat-checkbox formControlName="Quinta">Quinta</mat-checkbox>
-          <mat-checkbox formControlName="Sexta">Sexta</mat-checkbox>
-          <mat-checkbox formControlName="Sabado">Sábado</mat-checkbox>
-          <mat-checkbox formControlName="Domingo">Domingo</mat-checkbox>
-        </div>
-  
-        <div *ngIf="scheduleForm.get('Segunda')?.value">
-          <label for="horarioSegunda">Horário para Segunda-feira:</label>
-          <input matInput type="time" id="horarioSegunda" formControlName="horarioSegunda">
-          <button mat-flat-button color="primary"
-            (click)="addWeekAndTime('Segunda', scheduleForm.get('horarioSegunda')?.value)">+</button>
-          <mat-chip-listbox>
-            <mat-chip *ngFor="let item of filterByWeekDay('segunda')" matChipRemove (click)="removeFromSchedule(item)"> 
-              {{item.time}}
-              <mat-chip-trailing-icon>
-                <mat-icon>cancel</mat-icon>
-              </mat-chip-trailing-icon>
-            </mat-chip>
-          </mat-chip-listbox>
-        </div>
-  
-        <div *ngIf="scheduleForm.get('Terca')?.value">
-          <label for="horarioTerca">Horário para Terça-feira:</label>
-          <input matInput type="time" id="horarioTerca" formControlName="horarioTerca">
-        </div>
-  
-        <div *ngIf="scheduleForm.get('Quarta')?.value">
-          <label for="horarioQuarta">Horário para Quarta-feira:</label>
-          <input matInput type="time" id="horarioQuarta" formControlName="horarioQuarta">
-        </div>
-  
-        <div *ngIf="scheduleForm.get('Quinta')?.value">
-          <label for="horarioQuinta">Horário para Quinta-feira:</label>
-          <input matInput type="time" id="horarioQuinta" formControlName="horarioQuinta">
-        </div>
-  
-        <div *ngIf="scheduleForm.get('Sexta')?.value">
-          <label for="horarioSexta">Horário para Sexta-feira:</label>
-          <input matInput type="time" id="horarioSexta" formControlName="horarioSexta">
-        </div>
-  
-        <div *ngIf="scheduleForm.get('Sabado')?.value">
-          <label for="horarioSabado">Horário para Sábado:</label>
-          <input matInput type="time" id="horarioSabado" formControlName="horarioSabado">
-        </div>
-  
-        <div *ngIf="scheduleForm.get('Domingo')?.value">
-          <label for="horarioDomingo">Horário para Domingo:</label>
-          <input matInput type="time" id="horarioDomingo" formControlName="horarioDomingo">
-        </div>
-  
-        
-      </form>
-    </mat-card-content>
-  </mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>Configurar disponibilidade de horários</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="scheduleForm">
+      <div>
+        <label for="horarioSegunda">Horário para Terca-feira:</label>
+        <mat-form-field>
+          <mat-select formControlName="horarioSegunda">
+            <mat-option *ngFor="let item of availableTime" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary"
+          (click)="addWeekAndTime('Segunda', scheduleForm.get('horarioSegunda')?.value)">+</button>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let item of filterByWeekDay('Segunda')" matChipRemove (click)="removeFromSchedule(item)">
+            {{item.time}}
+            <mat-chip-trailing-icon>
+              <mat-icon>cancel</mat-icon>
+            </mat-chip-trailing-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <div>
+        <label for="horarioTerca">Horário para Terca-feira:</label>
+        <mat-form-field>
+          <mat-select formControlName="horarioTerca">
+            <mat-option *ngFor="let item of availableTime" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary"
+          (click)="addWeekAndTime('Terca', scheduleForm.get('horarioTerca')?.value)">+</button>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let item of filterByWeekDay('Terca')" matChipRemove (click)="removeFromSchedule(item)">
+            {{item.time}}
+            <mat-chip-trailing-icon>
+              <mat-icon>cancel</mat-icon>
+            </mat-chip-trailing-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <div>
+        <label for="horarioQuarta">Horário para Quarta-feira:</label>
+        <mat-form-field>
+          <mat-select formControlName="horarioQuarta">
+            <mat-option *ngFor="let item of availableTime" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary"
+          (click)="addWeekAndTime('Quarta', scheduleForm.get('horarioQuarta')?.value)">+</button>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let item of filterByWeekDay('Quarta')" matChipRemove (click)="removeFromSchedule(item)">
+            {{item.time}}
+            <mat-chip-trailing-icon>
+              <mat-icon>cancel</mat-icon>
+            </mat-chip-trailing-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <div>
+        <label for="horarioQuinta">Horário para Quinta-feira:</label>
+        <mat-form-field>
+          <mat-select formControlName="horarioQuinta">
+            <mat-option *ngFor="let item of availableTime" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary"
+          (click)="addWeekAndTime('Quinta', scheduleForm.get('horarioQuinta')?.value)">+</button>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let item of filterByWeekDay('Quinta')" matChipRemove (click)="removeFromSchedule(item)">
+            {{item.time}}
+            <mat-chip-trailing-icon>
+              <mat-icon>cancel</mat-icon>
+            </mat-chip-trailing-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <div>
+        <label for="horarioSexta">Horário para Sexta-feira:</label>
+        <mat-form-field>
+          <mat-select formControlName="horarioSexta">
+            <mat-option *ngFor="let item of availableTime" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary"
+          (click)="addWeekAndTime('Sexta', scheduleForm.get('horarioSexta')?.value)">+</button>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let item of filterByWeekDay('Sexta')" matChipRemove (click)="removeFromSchedule(item)">
+            {{item.time}}
+            <mat-chip-trailing-icon>
+              <mat-icon>cancel</mat-icon>
+            </mat-chip-trailing-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <div>
+        <label for="horarioSexta">Horário para Sábado:</label>
+        <mat-form-field>
+          <mat-select formControlName="horarioSabado">
+            <mat-option *ngFor="let item of availableTime" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary"
+          (click)="addWeekAndTime('Sabado', scheduleForm.get('horarioSabado')?.value)">+</button>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let item of filterByWeekDay('Sabado')" matChipRemove (click)="removeFromSchedule(item)">
+            {{item.time}}
+            <mat-chip-trailing-icon>
+              <mat-icon>cancel</mat-icon>
+            </mat-chip-trailing-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <div>
+        <label for="horarioSexta">Horário para Domingo:</label>
+        <mat-form-field>
+          <mat-select formControlName="horarioDomingo">
+            <mat-option *ngFor="let item of availableTime" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary"
+          (click)="addWeekAndTime('Domingo', scheduleForm.get('horarioDomingo')?.value)">+</button>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let item of filterByWeekDay('Domingo')" matChipRemove (click)="removeFromSchedule(item)">
+            {{item.time}}
+            <mat-chip-trailing-icon>
+              <mat-icon>cancel</mat-icon>
+            </mat-chip-trailing-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
