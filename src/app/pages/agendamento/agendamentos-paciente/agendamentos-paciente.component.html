@@ -1,1 +1,42 @@
-<p>agendamentos-paciente works!</p>
+<div class="container ph-1">
+  <h1 class="mt-1 mb-1">Agendamentos</h1>
+
+  <div *ngFor="let age of agendamentos">
+    <div class="row">
+      <div class="col-6">
+        <mat-card class="mb-1">
+          <mat-card-header>
+            
+            <p class="bold">
+              Especialidade:
+              <span class="normal"
+                >{{ age.medico.especialidade }}</span
+              >
+            </p>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="bold">
+                Médico:
+                <span class="normal"
+                  >{{ age.medico.nome }} {{ age.medico.sobrenome }}</span
+                >
+              </p>
+            <p class="inline mr-1 bold">
+              Data: <span class="normal">{{ age.data | date }}</span>
+            </p>
+            <p class="inline bold">
+              Horário: <span class="normal">{{ age.horario }}</span>
+            </p>
+            
+          </mat-card-content>
+          <mat-card-actions class="block">
+            <mat-chip class="example-box" cdkDrag *ngIf="age.status != 'Agendado'">{{age.status}}</mat-chip>
+
+            <button mat-flat-button color="warn" (click)="launchCancelDialog(age.id)" *ngIf="age.status != 'Cancelado'">Cancelar agendamento</button>
+          </mat-card-actions>
+
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
