@@ -19,7 +19,6 @@
                 matInput
                 formGroupName="especialidade"
                 [matAutocomplete]="auto"
-                
               />
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option
@@ -27,7 +26,7 @@
                   *ngFor="let especialidade of filteredEspecialidade | async"
                   [value]="especialidade.nome"
                 >
-                  {{ especialidade.nome}}
+                  {{ especialidade.nome }}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -56,8 +55,23 @@
     </mat-card>
 
     <div *ngFor="let m of medicos">
-      <app-card-medicos [medico]="m"></app-card-medicos>
-
+      <app-card-medicos
+        [medico]="m"
+        (eventSelectDate)="selecionarDataHora($event)"
+      ></app-card-medicos>
     </div>
+    <button
+      class="f-right mt-10"
+      (click)="agendarConsulta()"
+      *ngIf="selectedDate"
+      mat-raised-button
+      [disabled]="loading"
+      color="primary"
+    >
+      Agendar
+      <mat-icon *ngIf="loading"
+        ><mat-spinner diameter="20"> </mat-spinner
+      ></mat-icon>
+    </button>
   </div>
 </div>

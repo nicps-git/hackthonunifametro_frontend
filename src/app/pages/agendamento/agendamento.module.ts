@@ -3,14 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AgendamentoRoutingModule } from './agendamento-routing.module';
 
-
 @NgModule({
-  declarations: [
-    
-  ],
-  imports: [
-    CommonModule,
-    AgendamentoRoutingModule,
-  ]
+  declarations: [],
+  imports: [CommonModule, AgendamentoRoutingModule],
 })
-export class AgendamentoModule { }
+export class AgendamentoModule {}

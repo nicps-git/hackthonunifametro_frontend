@@ -21,6 +21,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { PasswordRecoveryComponent } from './auth/password-recovery/password-recovery.component';
 import { PasswordRedefineComponent } from './auth/password-redefine/password-redefine.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AgendamentosPacienteComponent } from './agendamento/agendamentos-paciente/agendamentos-paciente.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RegisterComponent } from './auth/register/register.component';
     PasswordRecoveryComponent,
     PasswordRedefineComponent,
     RegisterComponent,
+    AgendamentosPacienteComponent
   ],
   imports: [
     CommonModule,

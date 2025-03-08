@@ -12,7 +12,7 @@
 @media (min-width: 768px) {
     .container {
        padding: 20px;
-       margin: auto;
+       width: 50%;
     }
   }
 
@@ -20,7 +20,7 @@
   @media (min-width: 1024px) {
     .container {
        padding: 30px 90px 30px 90px;
-       margin: auto;
+       width: 50%;
     }
   }
 
@@ -32,12 +32,8 @@
     width: 100%; /* Garante que cada campo ocupe todo o espaço disponível */
   }
 
-  mat-card {
-    width: 50%;
-}
-
-.mb-5{
-    margin-bottom: 5px;
+.mb-10{
+    margin-bottom: 10px;
 }
 
 .description {

@@ -1,3 +1,5 @@
+import { Disponibilidade } from "./disponibilidade.model";
+
 export interface Medico {
     id: string;
     nome: string;
@@ -12,6 +14,7 @@ export interface Medico {
     sexo: string;
     createdAt: string; // Pode ser ajustado para Date, dependendo do uso
     updatedAt: string; // Pode ser ajustado para Date, dependendo do uso
+    disponibilidade: Disponibilidade[]
 }
 
 export interface ResponseMedico{
