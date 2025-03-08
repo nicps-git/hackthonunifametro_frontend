@@ -26,6 +26,7 @@ import { CreateDoctorComponent } from './doctor/create-doctor/create-doctor.comp
 import {MatChipsModule} from '@angular/material/chips';
 import { DoctorsListComponent } from './doctor/doctors-list/doctors-list.component';
 import {MatTableModule} from '@angular/material/table';
+import { ConsultaComponent } from './doctor/consulta/consulta.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -36,6 +37,7 @@ import {MatTableModule} from '@angular/material/table';
     AgendamentosPacienteComponent,
     CreateDoctorComponent,
     DoctorsListComponent,
+    ConsultaComponent
 
   ],
   imports: [

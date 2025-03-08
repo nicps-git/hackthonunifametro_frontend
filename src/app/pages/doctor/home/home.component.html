@@ -10,7 +10,7 @@
             <p class="inline bold">Hora: <span class="normal">21:30</span></p>
         </mat-card-content>
         <mat-card-actions class="block">
-            <button mat-flat-button color="primary">Iniciar consulta</button>
+            <button mat-flat-button color="primary" (click)="navigate('medico/consulta')">Iniciar consulta</button>
             <button mat-flat-button color="warn" (click)="launchCancelDialog()">Cancelar agendamento</button>
         </mat-card-actions>
     </mat-card>
