@@ -1,13 +1,13 @@
 <div class="container ph-1">
     <div>
         <h1 class="mt-1 mb-1">Próximas consultas</h1>
-    <mat-card class="mb-1">
+    <mat-card class="mb-1" *ngFor="let age of agendamentos">
         <mat-card-header>
-            <p class="bold">Paciente: <span class="normal">Caio Orleans Silva de Oliveira</span></p>
+            <p class="bold">Paciente: <span class="normal">{{age.paciente.nome}} {{age.paciente.sobrenome}}</span></p>
         </mat-card-header>
         <mat-card-content>
-            <p class="inline mr-1 bold">Data: <span class="normal">25/12/2050</span></p>
-            <p class="inline bold">Hora: <span class="normal">21:30</span></p>
+            <p class="inline mr-1 bold">Data: <span class="normal">{{age.data | date: 'dd/MM/YYYY'}}</span></p>
+            <p class="inline bold">Hora: <span class="normal">{{age.horario}}</span></p>
         </mat-card-content>
         <mat-card-actions class="block">
             <button mat-flat-button color="primary" (click)="navigate('medico/consulta')">Iniciar consulta</button>
