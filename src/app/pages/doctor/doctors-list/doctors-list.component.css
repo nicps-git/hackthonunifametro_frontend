@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+    .container {
+       padding: 20px;
+       margin: auto;
+    }
+  }
+  
+  /* Para telas grandes (desktops) */
+  @media (min-width: 1024px) {
+    .container {
+       padding: 30px 90px 30px 90px;
+       margin: auto;
+    }
+  }
+.header-page {
+  display: flex;
+  justify-content: space-between;
+}

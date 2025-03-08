@@ -24,6 +24,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AgendamentosPacienteComponent } from './agendamento/agendamentos-paciente/agendamentos-paciente.component';
 import { CreateDoctorComponent } from './doctor/create-doctor/create-doctor.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { DoctorsListComponent } from './doctor/doctors-list/doctors-list.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -32,7 +34,9 @@ import {MatChipsModule} from '@angular/material/chips';
     PasswordRedefineComponent,
     RegisterComponent,
     AgendamentosPacienteComponent,
-    CreateDoctorComponent
+    CreateDoctorComponent,
+    DoctorsListComponent,
+
   ],
   imports: [
     CommonModule,
@@ -52,7 +56,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatSelectModule,
     MatProgressSpinnerModule,
     NgxMaskDirective,
-    MatChipsModule
+    MatChipsModule,
+    MatTableModule
   ],
   exports: [],
   providers: [provideNgxMask()],

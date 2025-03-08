@@ -13,4 +13,8 @@ private url: string = 'http://localhost:8081/v1/medico';
   medicoByEspecialidade(idEspecialidade: string): Observable<ResponseMedico>{
     return this.http.get<ResponseMedico>(`${this.url}/byEspecialidade?idEspecialidade=${idEspecialidade}&orderBy=nome`)
   }
+
+  medicoAll(): Observable<ResponseMedico>{
+    return this.http.get<ResponseMedico>(`${this.url}/all?orderBy=nome`)
+  }
 }
