@@ -30,7 +30,7 @@ registerLocaleData(localePt, 'pt-BR');
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CustomDialogComponent } from './components/custom-dialog/custom-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
   declarations: [
     FrameComponent,
@@ -59,6 +59,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatExpansionModule,
     MatDatepickerModule,
+    MatTabsModule
   ],
   exports: [
     AddressComponent,

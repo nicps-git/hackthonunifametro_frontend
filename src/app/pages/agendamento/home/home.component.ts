@@ -40,12 +40,6 @@ export class HomeComponent implements OnInit {
   private _snackBar = inject(MatSnackBar);
   loading: boolean = false;
 
-  diasDisponiveis = [
-    { data: new Date(2025, 2, 7), horarios: ['09:00', '11:00', '15:00'] },
-    { data: new Date(2025, 3, 15), horarios: ['08:00', '13:00'] },
-    { data: new Date(2025, 4, 3), horarios: ['10:00', '16:30'] },
-  ];
-
   constructor(
     private fb: FormBuilder,
     private especialidadeService: EspecialidadeService,
@@ -89,9 +83,6 @@ export class HomeComponent implements OnInit {
       .medicoByEspecialidade(idEspecialidade)
       .subscribe((resp) => {
         this.medicos = resp.data;
-        this.medicos.forEach((e) => {
-          e.disponibilidade = this.diasDisponiveis;
-        });
       });
   }
 
