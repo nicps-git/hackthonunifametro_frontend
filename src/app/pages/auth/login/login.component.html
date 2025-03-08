@@ -2,7 +2,7 @@
     <form action="" method="post" [formGroup]="loginForm">
         <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput type="text" formControlName="username" required="false" appCpfFormat>
+            <input matInput type="text" formControlName="username" required="false">
         </mat-form-field>
 
         <mat-form-field appearance="outline" required="false">
@@ -17,8 +17,8 @@
         </mat-form-field>
     </form>
     <div id="links">
-        <a routerLink="/auth/recovery-password">Redefinir senha</a>
-        <a routerLink="/auth/register">Cadastre-se</a>
+        <a (click)="navigateToRecoveryPassword()">Redefinir senha</a>
+        <a (click)="navigateToRegister()">Cadastre-se</a>
     </div>
     <div id="button-container">
         <app-button-with-loading 

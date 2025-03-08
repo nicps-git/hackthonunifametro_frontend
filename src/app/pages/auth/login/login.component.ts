@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/service/auth-service/auth.service';
 import { environment } from 'src/environments/environment';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -40,8 +41,17 @@ export class LoginComponent implements OnInit{
       next: (res) => {
         this.isLoading = false;
         const token = res.data.token;
+        const decodedToken:{user:string, perfil:string} = jwtDecode(token);
+        localStorage.setItem(environment.userRoleKey, decodedToken.perfil);
+        localStorage.setItem(environment.userIdKey, decodedToken.user);
         localStorage.setItem(environment.accessTokenKey, token);
-        this.router.navigate(['/agendamento/home'])
+
+        if(decodedToken.perfil === "Paciente"){
+          this.router.navigate(['/agendamento/home'])
+        } 
+        else{
+          this.router.navigate(['/medico/home'])
+        }
       },
       error: (err) => {
         let errorMessage = "";
@@ -58,5 +68,13 @@ export class LoginComponent implements OnInit{
         this.isLoading = false;
       },
     })
+  }
+
+  navigateToRecoveryPassword(){
+    this.router.navigate(['/auth/recovery-password']);
+  }
+
+  navigateToRegister(){
+    this.router.navigate(['/auth/register']);
   }
 }

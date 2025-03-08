@@ -1,0 +1,32 @@
+<mat-accordion class="mb-5">
+  <mat-expansion-panel
+    (opened)="panelOpenState.set(true)"
+    (closed)="panelOpenState.set(false)"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ medico?.nome }} {{ medico?.sobrenome }} - CRM: {{ medico?.crm }} </mat-panel-title>
+      <mat-panel-description>
+        {{medico?.descricaoEspecialidade}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <mat-card class="col-6" *ngFor="let dia of getDiasComHorariosDisponiveis()">
+          <mat-card-header>
+            <h4>{{ dia.data | date : "fullDate" }}</h4>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="horarios-container">
+              <button
+                *ngFor="let horario of dia.horarios"
+                class="horario-btn"
+                [class.selected]="isHorarioSelecionado(horario)"
+                (click)="selecionarHorario(horario, dia.data)"
+              >
+                {{ horario }}
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

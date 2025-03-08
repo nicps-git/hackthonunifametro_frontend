@@ -1,1 +1,77 @@
-<p>home works!</p>
+<div class="bg-medicos">
+  <div class="container">
+    <h1>Agende agora sua consulta</h1>
+    <h3 class="description">
+      Não deixe para depois o cuidado que você merece. Agende sua consulta hoje
+      mesmo e <br />
+      garanta bem-estar e qualidade de vida. Estamos aqui para cuidar de você!
+    </h3>
+    <mat-card class="p-20 mb-5" appearance="outlined">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Especialidade</mat-label>
+              <input
+                type="text"
+                placeholder="Selecione a especialidade"
+                aria-label="especialidade"
+                matInput
+                formGroupName="especialidade"
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  (click)="getMedicosByEspecialidade(especialidade.id)"
+                  *ngFor="let especialidade of filteredEspecialidade | async"
+                  [value]="especialidade.nome"
+                >
+                  {{ especialidade.nome }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Selecione a data</mat-label>
+              <input
+                [min]="today"
+                matInput
+                [matDatepicker]="picker"
+                formControlName="data"
+                placeholder="DD/MM/AAAA"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+
+    <div *ngFor="let m of medicos">
+      <app-card-medicos
+        [medico]="m"
+        (eventSelectDate)="selecionarDataHora($event)"
+      ></app-card-medicos>
+    </div>
+    <button
+      class="f-right mt-10"
+      (click)="agendarConsulta()"
+      *ngIf="selectedDate"
+      mat-raised-button
+      [disabled]="loading"
+      color="primary"
+    >
+      Agendar
+      <mat-icon *ngIf="loading"
+        ><mat-spinner diameter="20"> </mat-spinner
+      ></mat-icon>
+    </button>
+  </div>
+</div>
