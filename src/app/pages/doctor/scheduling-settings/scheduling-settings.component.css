@@ -1,0 +1,38 @@
+.p-1{
+    padding: 1rem;
+}
+
+.container-dia{
+    display: flex;
+    flex-direction: column;
+    max-width: 18rem;
+}
+
+.flex {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+mat-card{
+    min-height: 16rem;
+}
+
+mat-card-header {
+    margin-bottom: 1rem;
+}
+
+mat-form-field {
+    width: 100%
+}
+
+button {
+    width: 100%;
+    margin-bottom: 1rem;
+}

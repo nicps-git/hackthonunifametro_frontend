@@ -3,6 +3,7 @@
   <span class="spacer"></span>
   <a *ngIf="perfilUser == 'Paciente'" mat-button (click)="navigate('/agendamento/paciente')">Meus agendamentos</a>
   <a *ngIf="perfilUser == 'Admin' || perfilUser == 'Gerente'" mat-button (click)="navigate('/medico/create')">Cadastrar Medico</a>
+  <a *ngIf="perfilUser == 'Médico'" mat-button (click)="navigate('medico/configuracao-horario')">Meus horários</a>
 
   <button mat-icon-button (click)="logout()">
     <mat-icon>logout</mat-icon>

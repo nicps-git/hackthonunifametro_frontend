@@ -17,13 +17,13 @@ export class SchedulingSettingsComponent implements OnInit{
 
   constructor(private fb: FormBuilder, private scheduleService:DoctorScheduleService, private snackBar: MatSnackBar,) {
     this.scheduleForm = this.fb.group({
-      horarioSegunda: ['', Validators.required],
-      horarioTerca: ['', Validators.required],
-      horarioQuarta: ['', Validators.required],
-      horarioQuinta: ['', Validators.required],
-      horarioSexta: ['', Validators.required],
-      horarioSabado: ['', Validators.required],
-      horarioDomingo: ['', Validators.required]
+      horarioSegunda: [''],
+      horarioTerca: [''],
+      horarioQuarta: [''],
+      horarioQuinta: [''],
+      horarioSexta: [''],
+      horarioSabado: [''],
+      horarioDomingo: ['']
     });
 
     for(let i = 0;i<=24;i++){
