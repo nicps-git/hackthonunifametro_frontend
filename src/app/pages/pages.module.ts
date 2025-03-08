@@ -23,7 +23,7 @@ import { PasswordRedefineComponent } from './auth/password-redefine/password-red
 import { RegisterComponent } from './auth/register/register.component';
 import { AgendamentosPacienteComponent } from './agendamento/agendamentos-paciente/agendamentos-paciente.component';
 import { CreateDoctorComponent } from './doctor/create-doctor/create-doctor.component';
-
+import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -52,6 +52,7 @@ import { CreateDoctorComponent } from './doctor/create-doctor/create-doctor.comp
     MatSelectModule,
     MatProgressSpinnerModule,
     NgxMaskDirective,
+    MatChipsModule
   ],
   exports: [],
   providers: [provideNgxMask()],

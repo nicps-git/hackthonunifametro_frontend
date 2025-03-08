@@ -45,4 +45,14 @@ export class AuthService {
       return '';
     }
   }
+
+  idUser(): string {
+    const token = localStorage.getItem(this.tokenKey)?.toString();
+    if (token) {
+      const decodedToken: { idUser: string } = jwtDecode(token);
+      return decodedToken.idUser;
+    } else {
+      return '';
+    }
+  }
 }

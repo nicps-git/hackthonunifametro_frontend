@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path:'medico',
     loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule),
-    canActivateChild: [RoleGuard, AuthGuard],
+    canActivateChild: [RoleGuard],
     data: {roles: ["Médico", "Admin", 'Gerente']},
   }
 ];
