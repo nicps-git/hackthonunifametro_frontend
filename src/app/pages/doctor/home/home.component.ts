@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CustomDialogComponent } from 'src/app/shared/components/custom-dialog/custom-dialog.component';
 
 @Component({
@@ -9,7 +10,7 @@ import { CustomDialogComponent } from 'src/app/shared/components/custom-dialog/c
 })
 export class HomeComponent {
 
-  constructor(private dialog:MatDialog){}
+  constructor(private dialog:MatDialog, private router: Router){}
 
   launchCancelDialog(){
     const dialogRef = this.dialog.open(CustomDialogComponent, {
@@ -27,5 +28,10 @@ export class HomeComponent {
         console.log("não excluir")
       }
     })
+  }
+
+  
+  navigate(url:string){
+    this.router.navigate([url]);
   }
 }
