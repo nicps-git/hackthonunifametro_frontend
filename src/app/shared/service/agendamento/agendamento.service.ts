@@ -18,6 +18,11 @@ private url: string = 'http://localhost:8081/v1/agendamento';
     return this.http.get<ReponseAgendamentosPorPaciente[]>(`${this.url}/paciente?idPaciente=${idUser}`)
   }
 
+  agendamentosPorMedico(idUser: string): Observable<any>{
+    return this.http.get<any>(`${this.url}/medico?idMedico=${idUser}`)
+  }
+
+
   cancelarAgendamento(idAgendamento : string): Observable<ReponseAgendamentosPorPaciente[]>{
     const body = {
       idAgendamento: idAgendamento,

@@ -30,7 +30,7 @@ const routes: Routes = [
     data: { roles: ['Admin', 'Gerente'] },
   },
   {
-    path: 'consulta',
+    path: 'consulta/:id',
     component: ConsultaComponent ,
     canActivateChild: [RoleGuard],
     data: { roles: ['Admin', 'Médico'] },
