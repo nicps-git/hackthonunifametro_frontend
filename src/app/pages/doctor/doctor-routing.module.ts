@@ -5,6 +5,7 @@ import { SchedulingSettingsComponent } from './scheduling-settings/scheduling-se
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
 import { RoleGuard } from 'src/app/shared/guards/role.guard';
 import { DoctorsListComponent } from './doctors-list/doctors-list.component';
+import { ConsultaComponent } from './consulta/consulta.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,12 @@ const routes: Routes = [
     component: DoctorsListComponent ,
     canActivateChild: [RoleGuard],
     data: { roles: ['Admin', 'Gerente'] },
+  },
+  {
+    path: 'consulta',
+    component: ConsultaComponent ,
+    canActivateChild: [RoleGuard],
+    data: { roles: ['Admin', 'Médico'] },
   },
 ];
 
