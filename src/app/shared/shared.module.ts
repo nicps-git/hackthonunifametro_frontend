@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { AddressService } from './service/address-service/address.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 import { FrameComponent } from './components/frame/frame.component';
 import { ButtonWithLoadingComponent } from './components/button-with-loading/button-with-loading.component';
@@ -21,9 +21,16 @@ import { MinutesFormatPipe } from './pipe/minutes-format.pipe';
 import { CpfFormatDirective } from './diretive/cpf-format.directive';
 import { AddressComponent } from './components/address/address.component';
 import { HeaderComponent } from './components/header/header.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { CardMedicosComponent } from './components/card-medicos/card-medicos.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt, 'pt-BR');
+
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CustomDialogComponent } from './components/custom-dialog/custom-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     FrameComponent,
@@ -32,33 +39,42 @@ import { MatDialogModule } from '@angular/material/dialog';
     CpfFormatDirective,
     AddressComponent,
     HeaderComponent,
-    CustomDialogComponent
+    CardMedicosComponent,
+    CustomDialogComponent,
   ],
   imports: [
     CommonModule,
-      MatFormFieldModule,
-       ReactiveFormsModule,
-       MatInputModule,
-       MatSelectModule,
-       MatNativeDateModule,
-       MatIconModule,
-       HttpClientModule,
-       MatCardModule,
-       MatProgressSpinnerModule,
-       MatButtonModule,
-      NgxMaskDirective,
-      MatToolbarModule,
-      MatDialogModule
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatIconModule,
+    HttpClientModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    NgxMaskDirective,
+    MatToolbarModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatDatepickerModule,
   ],
-  exports:[
+  exports: [
     AddressComponent,
     FrameComponent,
     ButtonWithLoadingComponent,
     MinutesFormatPipe,
     CpfFormatDirective,
-    HeaderComponent
+    HeaderComponent,
+    CardMedicosComponent,
   ],
-  providers: [AddressService, UsuarioService, provideNgxMask(), AuthService]
-  
+  providers: [
+    AddressService,
+    UsuarioService,
+    provideNgxMask(),
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+  ],
 })
 export class SharedModule {}

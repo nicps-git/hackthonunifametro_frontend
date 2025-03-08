@@ -11,7 +11,7 @@ import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/shared/service/usuario-service/usuario.service';
-
+import {formatDateYYYYMMDD} from 'src/app/shared/util/formatDate'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
     console.log(paciente);
 
     // Formatando a data antes de enviar
-    paciente.dataNascimento = this.formatarDataNascimento(
+    paciente.dataNascimento = formatDateYYYYMMDD(
       paciente.dataNascimento
     );
 
@@ -85,9 +85,9 @@ export class RegisterComponent implements OnInit {
           this.openSnackBar('Usuário cadastrado com sucesso!', '');
           setTimeout(() => {
             this.router.navigate(['/auth/login']);
+            this.loading = false;
           }, 3000);
         }
-        this.loading = false;
       },
       error: (err) => {
         console.error('Erro ao cadastrar usuário:', err);
@@ -98,14 +98,6 @@ export class RegisterComponent implements OnInit {
         this.loading = false;
       },
     });
-  }
-
-  formatarDataNascimento(data: string): string {
-    const [day, month, year] = data.split("/");
-    const nascimento = new Date(`${year}-${month}-${day}T00:00:00`);
-    const dia = nascimento.getDate().toString().padStart(2, '0'); // Pega o dia e adiciona zero à esquerda se necessário
-    const mes = (nascimento.getMonth() + 1).toString().padStart(2, '0'); // Meses começam em 0, então adicionamos +1
-    return `${dia}-${mes}`;
   }
 
   passwordConfirmarSenhaValidator(): ValidatorFn {
@@ -161,7 +153,7 @@ export class RegisterComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 3000,
+      duration: 30000,
     });
   }
 }
