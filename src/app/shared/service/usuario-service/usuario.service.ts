@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Paciente } from '../../model/paciente.model';
+import { Medico } from '../../model/medico.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +14,9 @@ export class UsuarioService {
 
   createUsuarioPaciente(paciente: Paciente): Observable<any> {
     return this.http.post<any>(`${this.url}/paciente`, paciente);
+  }
+
+  createUsuarioMedico(medico: Medico): Observable<any> {
+    return this.http.post<any>(`${this.url}/medico`, medico);
   }
 }

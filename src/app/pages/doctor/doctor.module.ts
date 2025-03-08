@@ -13,12 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,
-    SchedulingSettingsComponent
+    SchedulingSettingsComponent,
+
   ],
   imports: [
     CommonModule,
