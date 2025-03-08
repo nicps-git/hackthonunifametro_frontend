@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit{
       next: (res) => {
         this.isLoading = false;
         const token = res.data.token;
-        const decodedToken:{user:string, perfil:string} = jwtDecode(token);
+        const decodedToken:{idUser:string, perfil:string} = jwtDecode(token);
         localStorage.setItem(environment.userRoleKey, decodedToken.perfil);
-        localStorage.setItem(environment.userIdKey, decodedToken.user);
+        localStorage.setItem(environment.userIdKey, decodedToken.idUser);
         localStorage.setItem(environment.accessTokenKey, token);
 
         if(decodedToken.perfil === "Paciente"){
