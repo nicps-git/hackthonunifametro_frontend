@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "hackthonunifametro-frontend": "file:",
+    "jwt-decode": "^4.0.0",
     "ngx-mask": "^16.4.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
