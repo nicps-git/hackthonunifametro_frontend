@@ -1,0 +1,42 @@
+.bg-medicos {
+    background-image: url('../../../../assets/imgs/bg-medicos.png'); /* Substitua pelo caminho da sua imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; /* Garante que a imagem preencha toda a tela */
+    height: 90vh; /* Define a altura do corpo para 100% da altura da tela */
+    margin: 0; /* Remove margens externas */
+
+}
+  
+
+@media (min-width: 768px) {
+    .container {
+       padding: 20px;
+       width: 50%;
+    }
+  }
+
+  /* Para telas grandes (desktops) */
+  @media (min-width: 1024px) {
+    .container {
+       padding: 30px 90px 30px 90px;
+       width: 50%;
+    }
+  }
+
+  .p-20 {
+    padding: 20px;
+ }
+
+ mat-form-field {
+    width: 100%; /* Garante que cada campo ocupe todo o espaço disponível */
+  }
+
+.mb-10{
+    margin-bottom: 10px;
+}
+
+.description {
+    font-family: sans-serif;
+    color: #787878;
+}
