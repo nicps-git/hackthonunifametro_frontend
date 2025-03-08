@@ -1,7 +1,9 @@
 <mat-toolbar *ngIf="isAuthenticated" color="primary">
   <span class="logo">Uni Clin</span>
   <span class="spacer"></span>
-  <a mat-button routerLink="/agendamento/paciente">Meus agendamentos</a>
+  <a *ngIf="perfilUser == 'Paciente'" mat-button (click)="navigate('/agendamento/paciente')">Meus agendamentos</a>
+  <a *ngIf="perfilUser == 'Admin' || perfilUser == 'Gerente'" mat-button (click)="navigate('/medico/create')">Cadastrar Medico</a>
+
   <button mat-icon-button (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>

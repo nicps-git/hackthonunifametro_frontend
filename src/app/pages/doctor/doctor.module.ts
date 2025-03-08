@@ -14,12 +14,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,
-    SchedulingSettingsComponent
+    SchedulingSettingsComponent,
+
   ],
   imports: [
     CommonModule,
