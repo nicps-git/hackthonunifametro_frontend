@@ -21,12 +21,15 @@ import { MinutesFormatPipe } from './pipe/minutes-format.pipe';
 import { CpfFormatDirective } from './diretive/cpf-format.directive';
 import { AddressComponent } from './components/address/address.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { CardMedicosComponent } from './components/card-medicos/card-medicos.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt, 'pt-BR');
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { CustomDialogComponent } from './components/custom-dialog/custom-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ registerLocaleData(localePt, 'pt-BR');
     AddressComponent,
     HeaderComponent,
     CardMedicosComponent,
+    CustomDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -52,9 +56,9 @@ registerLocaleData(localePt, 'pt-BR');
     MatButtonModule,
     NgxMaskDirective,
     MatToolbarModule,
+    MatDialogModule,
     MatExpansionModule,
-    MatDatepickerModule
-    
+    MatDatepickerModule,
   ],
   exports: [
     AddressComponent,
@@ -63,8 +67,14 @@ registerLocaleData(localePt, 'pt-BR');
     MinutesFormatPipe,
     CpfFormatDirective,
     HeaderComponent,
-    CardMedicosComponent
+    CardMedicosComponent,
   ],
-  providers: [AddressService, UsuarioService, provideNgxMask(), AuthService,     { provide: LOCALE_ID, useValue: 'pt-BR' }],
+  providers: [
+    AddressService,
+    UsuarioService,
+    provideNgxMask(),
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+  ],
 })
 export class SharedModule {}
