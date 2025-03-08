@@ -1,8 +1,8 @@
 <mat-toolbar *ngIf="isAuthenticated" color="primary">
-    <span class="logo">Uni Clin</span>
-    <span class="spacer"></span>
-    <button mat-icon-button (click)="logout()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </mat-toolbar>
-  
+  <span class="logo">Uni Clin</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/meus-agendamentos">Meus agendamentos</a>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
